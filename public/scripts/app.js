@@ -5,6 +5,7 @@ const app = express();
 const pug = require('./pug.js');
 
 app.set('view engine', 'pug');
+
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {
