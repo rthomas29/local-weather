@@ -4,4 +4,4 @@ let renderPug = {
 	title: 'Local Weather'
 };
 
-module.exports.pugObj = renderPug;
+module.exports.renderPug = renderPug;
