@@ -34,14 +34,14 @@ $(document).ready(() => {
     });
   };
 
-    // get ip info to get lang., long.
+  // get ip info to get lang., long.
   $.getJSON('http://ipinfo.io', (data) => {
     $elHeader.hide().html(`${data.city} , ${data.region}`).fadeIn('slow');
     const latitude = Math.ceil(data.loc.slice(0, 6));
     const longitude = Math.ceil(data.loc.slice(8, 15));
     const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?' + 'lat=' + latitude + '&lon=' + longitude + '&APPID=b8d68c8a65b14ad16c7c153dca2c7882' + '&units=imperial';
 
-        // hit OpenWeatherAPI for current temp.
+    // hit OpenWeatherAPI for current temp.
     $.get(baseUrl).then((response) => {
       weatherDescriptionFunc(response);
       showCurrentTempFunc(response);
