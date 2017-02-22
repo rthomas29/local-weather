@@ -33,6 +33,7 @@ $(document).ready(() => {
       }
     });
   };
+
   $.getJSON('http://ipinfo.io').then((data) => {
     $elHeader.hide().html(`${data.city}, ${data.region}`).fadeIn('slow');
     const latitude = Math.ceil(data.loc.slice(0, 6));
