@@ -11,4 +11,4 @@ app.get('/', (request, response) => {
   response.render('index', { title: pug.renderPug.title });
 });
 
-app.listen('3000', () => { ('listening on 3000'); });
+app.listen('3000');

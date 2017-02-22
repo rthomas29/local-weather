@@ -43,3 +43,8 @@ a:link {
   text-decoration: none;
   color: white;
 }
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+    outline:none;
+    box-shadow:none;
+}

@@ -32,4 +32,6 @@ a:link {
   text-decoration: none;
   color: white; }
 
-/*# sourceMappingURL=styles.css.map */
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: none;
+  box-shadow: none; }
