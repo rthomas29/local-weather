@@ -9,7 +9,6 @@ module.exports = {
         "browser": true
     },
     "rules": {
-        "prefer-template": "off",
-        "no-useless-concat": "off"
+       
     }
 };
