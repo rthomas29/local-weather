@@ -49,7 +49,7 @@ $(document).ready(() => {
       scaleConvertFunc(response);
     }, () => ('error'));
   });
-
+  
   searchSubmit.addEventListener('click', () => {
     if ($elSearchForm.show() && searchInput.value) {
       $elSearchForm.hide('slow');
