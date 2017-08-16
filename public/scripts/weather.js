@@ -47,9 +47,9 @@ $(document).ready(() => {
       weatherDescriptionFunc(response);
       showCurrentTempFunc(response);
       scaleConvertFunc(response);
-    }, () => ('error'));
+    });
   });
-  
+
   searchSubmit.addEventListener('click', () => {
     if ($elSearchForm.show() && searchInput.value) {
       $elSearchForm.hide('slow');
@@ -64,7 +64,7 @@ $(document).ready(() => {
           weatherDescriptionFunc(response);
           showCurrentTempFunc(response);
           scaleConvertFunc(response);
-        }, () => ('error'));
+        });
       });
     }
   });
