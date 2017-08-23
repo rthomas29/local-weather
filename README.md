@@ -4,7 +4,7 @@ Local weather app (In progress)
 ## Status 
 Currently working on refactoring project with Angular 2. 
 
-###: Coming Soon
+### Coming Soon
 * 5 day forecast
 * Weather notifications
 * Search for city by name or zip code
