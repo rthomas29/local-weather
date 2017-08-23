@@ -2,7 +2,7 @@
 Local weather app (In progress)
 
 ## Status 
-Currently working on refactoring project with Angular 2. 
+Currently working on refactoring project with Angular 2 (on try-angular branch). 
 
 ### Coming Soon
 * 5 day forecast
