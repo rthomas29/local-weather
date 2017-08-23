@@ -1,8 +1,14 @@
 # local-weather
-Local weather app
+Local weather app (In progress)
+
+## Status 
+Currently working on refactoring project with Angular 2. 
+
+###: Coming Soon
+* 5 day forecast
+* Weather notifications
+* Search for city by name or zip code
 
 ## Summary
-local-weather is an app that utilizes the user's IP address and the OpenWeatherMapAPI to display the weather at their current location.
+local-weather is an app that utilizes the user's IP address and the OpenWeatherMapAPI to display the weather at their current location. (Angular 2, NodeJS)
 
-Special thanks to [@erikflowers](https://github.com/erikflowers) for the super cool weather icons! 
-Check out his project [here!](https://github.com/erikflowers/weather-icons)
