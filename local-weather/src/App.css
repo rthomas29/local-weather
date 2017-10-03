@@ -1,0 +1,48 @@
+body {
+  background-color: #6c7a89;
+  font-family: sans serif;
+}
+
+.page-header {
+  color: white;
+  font-family: open-sans;
+  border-bottom: none;
+}
+
+.main-output {
+  margin-top: 40px;
+  box-shadow: 10px 10px 10px;
+  color: white;
+}
+
+.well {
+  background-color: #f39c12;
+}
+
+#weather-description {
+  color: white;
+  font-size: 50px;
+  text-transform: capitalize;
+}
+
+.icons {
+  font-size: 60px;
+  color: purple;
+}
+
+input {
+  max-width: 50%;
+  margin: auto;
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none;
+  box-shadow: none;
+}
