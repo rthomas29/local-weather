@@ -2,7 +2,7 @@
 Local weather app (In progress)
 
 ## Status
-Currently working on refactoring project with React (on ui-react).
+Currently working on refactoring project with React.
 
 ### Coming Soon
 * 5 day forecast
