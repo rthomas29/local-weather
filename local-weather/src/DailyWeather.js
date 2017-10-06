@@ -10,7 +10,11 @@ const Image = styled.img`
 `
 const TempParagraph = styled.p`font-size: 2em;`
 const DailyWeatherDiv = styled.div`margin-bottom: 60px;`
-
+const ForecastHeader = styled.h2`
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dadfe1;
+  margin: 20px auto 60px auto;
+`
 const formatDate = stamp => {
   return moment.unix(stamp).format('dddd, MMMM Do')
 }
@@ -19,6 +23,7 @@ class DailyWeather extends Component {
   render() {
     return (
       <div className="container">
+        <ForecastHeader className="text-center">Five Day Forecast</ForecastHeader>
         <div className="row align-items-center justify-content-center">
           {this.props.dailyForecast.map(day => {
             let url = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`
