@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import WeatherDetails from './WeatherDetails'
-import DailyForecast from './DailyForecast'
+import DailyWeather from './DailyWeather'
 import axios from 'axios'
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
       tempFarenheit: 0,
       minTemp: 0,
       maxTemp: 0,
-      dailyForecast: {},
+      dailyForecastArray: [],
     }
   }
   ipInfoUrl = 'http://ipinfo.io'
@@ -27,7 +27,6 @@ class App extends Component {
       const longitude = Math.ceil(response.data.loc.slice(8, 15))
       const baseUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
       axios.get(baseUrl).then(response => {
-        console.log(response.data)
         this.setState({
           tempFarenheit: response.data.main.temp,
           minTemp: response.data.main.temp_min,
@@ -43,12 +42,15 @@ class App extends Component {
       const lon = Math.ceil(response.data.loc.slice(8, 15))
       const url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=5&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
       axios.get(url).then(response => {
-        console.log(response.data)
-        // work on generating array of components with this data here!
+        const dailyWeatherData = response.data
+        console.log(dailyWeatherData.list)
+        this.setState({
+          dailyForecastArray: dailyWeatherData.list,
+        })
       })
     })
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getInitialWeatherData()
     this.getDailyForecast()
   }
@@ -63,7 +65,7 @@ class App extends Component {
           maxTemp={this.state.maxTemp}
           region={this.state.region}
         />
-        <DailyForecast dailyForecast={this.state.dailyForecast} />
+        <DailyWeather dailyForecast={this.state.dailyForecastArray} />
       </div>
     )
   }
