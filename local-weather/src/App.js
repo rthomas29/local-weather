@@ -64,7 +64,6 @@ class App extends Component {
           name={this.state.cityName}
           region={this.state.region}
           icon={this.state.icon}
-          description={this.state.description}
           farenheit={Math.round(this.state.tempFarenheit)}
           minTemp={Math.round(this.state.minTemp)}
           maxTemp={Math.round(this.state.maxTemp)}
