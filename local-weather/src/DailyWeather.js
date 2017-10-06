@@ -10,7 +10,17 @@ class DailyWeather extends Component {
     return (
       <div>
         {this.props.dailyForecast.map(day => {
-          return <h2>{formatDate(day.dt)}</h2>
+          let url = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`
+          return (
+            <div key={day.dt}>
+              <h2>{formatDate(day.dt)}</h2>
+              <p>
+                <img src={url} alt="weather description icon" />
+              </p>
+              <p> Temp: {day.temp.day}</p>
+              <p>{day.weather[0].description}</p>
+            </div>
+          )
         })}
       </div>
     )
