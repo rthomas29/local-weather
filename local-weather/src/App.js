@@ -13,12 +13,13 @@ class App extends Component {
       tempFarenheit: 0,
       minTemp: 0,
       maxTemp: 0,
+      icon: 0,
       dailyForecastArray: [],
     }
   }
   ipInfoUrl = 'http://ipinfo.io'
   getInitialWeatherData() {
-    axios.get('http://ipinfo.io').then(response => {
+    axios.get(this.ipInfoUrl).then(response => {
       this.setState({
         cityName: response.data.city,
         region: response.data.region,
@@ -31,6 +32,8 @@ class App extends Component {
           tempFarenheit: response.data.main.temp,
           minTemp: response.data.main.temp_min,
           maxTemp: response.data.main.temp_max,
+          icon: response.data.weather[0].icon,
+          description: response.data.weather[0].description,
         })
       })
     })
@@ -43,7 +46,6 @@ class App extends Component {
       const url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=5&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
       axios.get(url).then(response => {
         const dailyWeatherData = response.data
-        console.log(dailyWeatherData.list)
         this.setState({
           dailyForecastArray: dailyWeatherData.list,
         })
@@ -60,10 +62,12 @@ class App extends Component {
       <div>
         <WeatherDetails
           name={this.state.cityName}
-          farenheit={this.state.tempFarenheit}
-          minTemp={this.state.minTemp}
-          maxTemp={this.state.maxTemp}
           region={this.state.region}
+          icon={this.state.icon}
+          description={this.state.description}
+          farenheit={Math.round(this.state.tempFarenheit)}
+          minTemp={Math.round(this.state.minTemp)}
+          maxTemp={Math.round(this.state.maxTemp)}
         />
         <DailyWeather dailyForecast={this.state.dailyForecastArray} />
       </div>

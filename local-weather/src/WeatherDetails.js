@@ -1,20 +1,24 @@
 import React from 'react'
 
 const WeatherDetails = props => {
+  let url = `http://openweathermap.org/img/w/${props.icon}.png`
   return (
-    <div className="col-md-6 col-md-offset-3">
-      <div className="main-output text-center well well-lg">
-        <h1 className="page-header text-center">
-          {props.name}, {props.region}
-        </h1>
-        <p id="weather-description" />
-        <i className="icons" />
-        <p id="weather-icon" />
-        <p id="city-name" />
-        <p id="city-weather">Current Temperature: {props.farenheit} degrees farenheit</p>
-        <p id="city-weather">Min: {props.minTemp} degrees farenheit</p>
-        <p id="city-weather">Max: {props.maxTemp} degrees farenheit</p>
-        <p id="weather-sub-info" className="text-center" />
+    <div className="container details">
+      <div className="row">
+        <div className="col">
+          <div className="main-output text-center well well-lg">
+            <h1 className="page-header text-center">
+              {props.name}, {props.region}
+            </h1>
+            <p id="weather-icon">
+              <img src={url} alt="weather icon" />
+            </p>
+            <p id="weather-description">{props.description}</p>
+            <p id="city-name" />
+            <p id="city-weather">{props.farenheit} &#8457;</p>
+            <p id="weather-sub-info" className="text-center" />
+          </div>
+        </div>
       </div>
     </div>
   )
