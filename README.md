@@ -5,7 +5,7 @@ Local weather app (In progress)
 Currently working on refactoring project with React.
 
 ### Coming Soon
-* 5 day forecast
+* ~~5 day forecast~~
 * Weather notifications
 * Search for city by name or zip code
 
