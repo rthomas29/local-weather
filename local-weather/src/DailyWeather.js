@@ -25,7 +25,7 @@ class DailyWeather extends Component {
               <DailyWeatherDiv key={day.dt} className="col-sm-12 col-md text-center">
                 <DateHeader>{formatDate(day.dt)}</DateHeader>
                 <Image src={url} alt="weather description icon" />
-                <TempParagraph>{Math.round(day.temp.day)} &#8457;</TempParagraph>
+                <TempParagraph>{Math.round(day.temp.day)} &deg;F</TempParagraph>
               </DailyWeatherDiv>
             )
           })}
