@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Description = styled.div`
+const CurrentTempDiv = styled.div`
+  max-width: 550px;
+  margin-bottom: 80px;
+  margin-left: auto;
+  margin-right: auto;
+`
+const TempParagraph = styled.div`
   font-size: 3em;
   text-align: center;
 `
@@ -12,21 +18,18 @@ const Image = styled.img`
 const WeatherDetails = props => {
   let url = `http://openweathermap.org/img/w/${props.icon}.png`
   return (
-    <div className="container details">
+    <div className="container">
       <div className="row">
         <div className="col">
-          <div className="main-output text-center well well-lg">
+          <CurrentTempDiv className="main-output text-center">
             <h1 className="page-header text-center">
               {props.name}, {props.region}
             </h1>
             <Image src={url} alt="weather icon" />
-            <Description>
-              <p id="weather-description">{props.description}</p>
-              <p id="city-name" />
+            <TempParagraph>
               <p id="city-weather">{props.farenheit} &#8457;</p>
-              <p id="weather-sub-info" className="text-center" />
-            </Description>
-          </div>
+            </TempParagraph>
+          </CurrentTempDiv>
         </div>
       </div>
     </div>
