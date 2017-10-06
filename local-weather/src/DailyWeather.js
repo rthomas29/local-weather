@@ -10,6 +10,7 @@ const Image = styled.img`
 `
 const TempParagraph = styled.p`font-size: 2em;`
 const DailyWeatherDiv = styled.div`margin-bottom: 60px;`
+
 const formatDate = stamp => {
   return moment.unix(stamp).format('dddd, MMMM Do')
 }
