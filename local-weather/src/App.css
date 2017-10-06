@@ -1,0 +1,40 @@
+body {
+  background-color: #e4f1fe;
+  font-family: sans serif;
+}
+
+.details {
+  max-width: 550px;
+  margin-bottom: 50px;
+}
+
+.page-header {
+  font-family: open-sans;
+  border-bottom: none;
+}
+
+.main-output {
+  margin-top: 40px;
+  color: black;
+}
+.icons {
+  font-size: 60px;
+  color: purple;
+}
+
+input {
+  max-width: 50%;
+  margin: auto;
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none;
+  box-shadow: none;
+}
