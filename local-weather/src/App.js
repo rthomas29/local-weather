@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './App.css'
 import WeatherDetails from './WeatherDetails'
 import DailyWeather from './DailyWeather'
+import Spinner from 'react-spinkit'
+
 import axios from 'axios'
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
       dailyForecastArray: [],
     }
   }
+
   ipInfoUrl = 'http://ipinfo.io'
   getInitialWeatherData() {
     axios.get(this.ipInfoUrl).then(response => {
@@ -52,12 +55,22 @@ class App extends Component {
       })
     })
   }
-  componentWillMount() {
-    this.getInitialWeatherData()
-    this.getDailyForecast()
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.getInitialWeatherData()
+      this.getDailyForecast()
+    }, 3500)
   }
 
   render() {
+    if (this.state.tempFarenheit === 0) {
+      return (
+        <div className="container justify-content-center centered">
+          <Spinner className="center-block" name="pacman" color="steelblue" />
+        </div>
+      )
+    }
     return (
       <div>
         <WeatherDetails
