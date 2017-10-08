@@ -3,7 +3,7 @@ import './App.css'
 import WeatherDetails from './WeatherDetails'
 import DailyWeather from './DailyWeather'
 import Spinner from 'react-spinkit'
-
+import SearchBar from './SearchBar'
 import axios from 'axios'
 
 class App extends Component {
@@ -72,7 +72,7 @@ class App extends Component {
       )
     }
     return (
-      <div>
+      <div className="container">
         <WeatherDetails
           name={this.state.cityName}
           region={this.state.region}
@@ -81,6 +81,7 @@ class App extends Component {
           minTemp={Math.round(this.state.minTemp)}
           maxTemp={Math.round(this.state.maxTemp)}
         />
+        <SearchBar />
         <DailyWeather dailyForecast={this.state.dailyForecastArray} />
       </div>
     )
