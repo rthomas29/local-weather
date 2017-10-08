@@ -17,9 +17,24 @@ class App extends Component {
       maxTemp: 0,
       icon: 0,
       dailyForecastArray: [],
+      nameFromParent: '',
     }
+
+    this.grabNameOnSubmit = this.grabNameOnSubmit.bind(this)
+  }
+  grabNameOnSubmit(childState) {
+    this.setState({ nameFromParent: childState })
   }
 
+  getCurrentWeatherByCity(city) {
+    axios
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`,
+      )
+      .then(response => {
+        console.log(response.data)
+      })
+  }
   ipInfoUrl = 'http://ipinfo.io'
   getInitialWeatherData() {
     axios.get(this.ipInfoUrl).then(response => {
@@ -81,7 +96,7 @@ class App extends Component {
           minTemp={Math.round(this.state.minTemp)}
           maxTemp={Math.round(this.state.maxTemp)}
         />
-        <SearchBar />
+        <SearchBar getCityName={this.grabNameOnSubmit} triggerRequest={this.getCurrentWeatherByCity} />
         <DailyWeather dailyForecast={this.state.dailyForecastArray} />
       </div>
     )

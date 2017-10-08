@@ -8,6 +8,7 @@ const Form = styled.form`
   margin-bottom: 40px;
 `
 const Button = styled.button`margin-top: 10px;`
+
 class SearchBar extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +21,7 @@ class SearchBar extends Component {
   }
   handleSubmit = e => {
     e.preventDefault()
-    let city = this.state.inputValue
+    this.props.triggerRequest('London')
   }
   render() {
     return (
