@@ -22,21 +22,39 @@ class App extends Component {
 
     this.grabNameOnSubmit = this.grabNameOnSubmit.bind(this)
   }
+
+  ipInfoUrl = 'http://ipinfo.io'
+
   grabNameOnSubmit(childState) {
     this.setState({ nameFromParent: childState })
   }
-
   getCurrentWeatherByCity(city) {
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`,
       )
       .then(response => {
-        console.log(response.data)
+        this.setState({ cityName: response.data.name, region: response.data.sys.country })
       })
   }
-  ipInfoUrl = 'http://ipinfo.io'
-  getInitialWeatherData() {
+
+  updateCurrentData() {
+    axios.get(this.ipInfoUrl).then(response => {
+      const latitude = Math.ceil(response.data.loc.slice(0, 6))
+      const longitude = Math.ceil(response.data.loc.slice(8, 15))
+      const baseUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
+      axios.get(baseUrl).then(response => {
+        this.setState({
+          tempFarenheit: response.data.main.temp,
+          minTemp: response.data.main.temp_min,
+          maxTemp: response.data.main.temp_max,
+          icon: response.data.weather[0].icon,
+          description: response.data.weather[0].description,
+        })
+      })
+    })
+  }
+  getWeatherData() {
     axios.get(this.ipInfoUrl).then(response => {
       this.setState({
         cityName: response.data.city,
@@ -73,11 +91,16 @@ class App extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.getInitialWeatherData()
+      this.getWeatherData()
       this.getDailyForecast()
     }, 3500)
   }
-
+  componentDidUpdate(prevState) {
+    if (prevState !== this.state) {
+      this.getCurrentWeatherByCity(this.state.nameFromParent)
+      this.updateCurrentData()
+    }
+  }
   render() {
     if (this.state.tempFarenheit === 0) {
       return (
@@ -96,7 +119,7 @@ class App extends Component {
           minTemp={Math.round(this.state.minTemp)}
           maxTemp={Math.round(this.state.maxTemp)}
         />
-        <SearchBar getCityName={this.grabNameOnSubmit} triggerRequest={this.getCurrentWeatherByCity} />
+        <SearchBar getCityName={this.grabNameOnSubmit} />
         <DailyWeather dailyForecast={this.state.dailyForecastArray} />
       </div>
     )

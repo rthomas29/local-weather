@@ -21,7 +21,7 @@ class SearchBar extends Component {
   }
   handleSubmit = e => {
     e.preventDefault()
-    this.props.triggerRequest('London')
+    this.props.getCityName(this.state.inputValue)
   }
   render() {
     return (
