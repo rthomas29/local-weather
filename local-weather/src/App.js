@@ -1,38 +1,45 @@
 import React, { Component } from 'react'
 import './App.css'
 import PrimaryWeather from './PrimaryWeather'
-import DailyForecast from './DailyForecast'
+import FiveDayForecast from './FiveDayForecast'
+import Spinner from 'react-spinkit'
 import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dailyWeatherArray: [],
+      fiveDayWeatherList: [],
     }
   }
-  getDailyForecast() {
-    axios.get(this.ipInfoUrl).then(response => {
+
+  getFiveDayForecast() {
+    axios.get('http://ipinfo.io').then(response => {
       const lat = Math.ceil(response.data.loc.slice(0, 6))
       const lon = Math.ceil(response.data.loc.slice(8, 15))
       const url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=5&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
       axios.get(url).then(response => {
         const dailyWeatherData = response.data
-        console.log(dailyWeatherData)
         this.setState({
-          dailyWeatherArray: dailyWeatherData.list,
+          fiveDayWeatherList: dailyWeatherData.list,
         })
       })
     })
   }
   componentDidMount() {
-    this.getDailyForecast()
+    this.showPacman = true
+    setTimeout(() => {
+      this.showPacman = false
+    }, 3500)
   }
   render() {
+    if (this.showPacman) {
+      return <Spinner name="pacman" color="steelblue" />
+    }
     return (
       <div className="container">
         <PrimaryWeather />
-        <DailyForecast displayArray={this.state.dailyWeatherArray} />
+        <FiveDayForecast fiveDayWeather={this.state.fiveDayWeatherList} />
       </div>
     )
   }
