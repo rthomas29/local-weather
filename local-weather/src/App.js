@@ -27,14 +27,17 @@ class App extends Component {
     })
   }
   componentDidMount() {
-    this.showPacman = true
     setTimeout(() => {
-      this.showPacman = false
+      this.getFiveDayForecast()
     }, 3500)
   }
   render() {
-    if (this.showPacman) {
-      return <Spinner name="pacman" color="steelblue" />
+    if (this.state.fiveDayWeatherList.length === 0) {
+      return (
+        <div className="container justify-content-center centered">
+          <Spinner className="center-block" name="pacman" color="steelblue" />
+        </div>
+      )
     }
     return (
       <div className="container">

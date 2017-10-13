@@ -41,7 +41,7 @@ class CurrentWeatherDetails extends Component {
               <Image src={url} alt="weather icon" />
               <p>{this.capitalizeFirstLetter(this.props.description)}</p>
               <TempParagraph>
-                <p id="city-weather">{this.props.fahrenheit} &deg;F</p>
+                <p id="city-weather">{Math.round(this.props.fahrenheit)} &deg;F</p>
               </TempParagraph>
             </CurrentTempDiv>
           </div>
