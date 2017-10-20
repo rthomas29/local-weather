@@ -63,17 +63,20 @@ class PrimaryWeather extends Component {
       })
   }
   componentDidMount() {
+    // gets initial weather data
     console.log('get weather data')
     // this.getWeatherData()
   }
   shouldComponentUpdate(nextProps, nextState) {
     // set state for sys.id and only update if that is different?
     // try to find something that is unique to each individual api call
+    // actually, cityName might work here, will have to check when apikey is unblocked
     return nextState.cityName !== this.state.cityName
   }
   componentDidUpdate() {
+    // component is only updated when cityName state is changed, so should execute function below, once apikey is unblocked
     console.log(`get updated weather data with this input value ${this.state.cityName}`)
-    // this.getWeatherByCityName(this.state.inputValue)
+    // this.getWeatherByCityName(this.state.cityName)
   }
   render() {
     return (
