@@ -12,20 +12,20 @@ const Button = styled.button`margin-top: 10px;`
 class SearchBar extends Component {
   constructor(props) {
     super(props)
-    this.state = { inputValue: '' }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange = e => {
-    this.setState({ inputValue: e.target.value })
+    this.props.onInputChange(e.target.value)
   }
   handleSubmit = e => {
     e.preventDefault()
-    this.props.getCityName(this.state.inputValue)
+    this.props.onSubmit()
+    console.log(this.props.inputValue)
   }
   render() {
+    const value = this.props.value
     return (
       <div className="container">
+        {this.props.inputValue}
         <Form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
