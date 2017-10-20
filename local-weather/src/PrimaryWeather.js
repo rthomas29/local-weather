@@ -54,7 +54,7 @@ class PrimaryWeather extends Component {
       )
       .then(response => {
         this.setState({
-          cityName: this.state.inputValue,
+          cityName: this.state.cityName,
           region: response.data.sys.country,
           fahrenheit: response.data.main.temp,
           icon: response.data.weather[0].icon,
@@ -63,13 +63,17 @@ class PrimaryWeather extends Component {
       })
   }
   componentDidMount() {
-    this.getWeatherData()
+    console.log('get weather data')
+    // this.getWeatherData()
   }
-  shouldComponentUpdate(nextState) {
-    return this.state.inputValue !== nextState.inputValue || this.state.cityName !== nextState.cityName
+  shouldComponentUpdate(nextProps, nextState) {
+    // set state for sys.id and only update if that is different?
+    // try to find something that is unique to each individual api call
+    return nextState.cityName !== this.state.cityName
   }
   componentDidUpdate() {
-    this.getWeatherByCityName(this.state.inputValue)
+    console.log(`get updated weather data with this input value ${this.state.cityName}`)
+    // this.getWeatherByCityName(this.state.inputValue)
   }
   render() {
     return (

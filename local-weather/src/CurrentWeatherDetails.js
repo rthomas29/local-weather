@@ -29,11 +29,12 @@ class CurrentWeatherDetails extends Component {
     return output.join('')
   }
   render() {
-    const url = `http://openweathermap.org/img/w/${this.props.icon}.png`
+    // const url = `http://openweathermap.org/img/w/${this.props.icon}.png`
     return (
       <div className="container">
         <div className="row">
-          <div className="col">
+          mmmhmm
+          {/* <div className="col">
             <CurrentTempDiv className="text-center">
               <h1 className="page-header text-center">
                 {this.props.name}, {this.props.region}
@@ -44,7 +45,7 @@ class CurrentWeatherDetails extends Component {
                 <p id="city-weather">{Math.round(this.props.fahrenheit)} &deg;F</p>
               </TempParagraph>
             </CurrentTempDiv>
-          </div>
+          </div> */}
         </div>
       </div>
     )
