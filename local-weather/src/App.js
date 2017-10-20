@@ -10,36 +10,35 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fiveDayWeather: [
-        {
-          temp: 83,
-          icon: '04n',
-          description: 'overcast clouds',
-        },
-        {
-          temp: 84,
-          icon: '04n',
-          description: 'overcast clouds',
-        },
-        {
-          temp: 85,
-          icon: '04n',
-          description: 'overcast clouds',
-        },
-        {
-          temp: 86,
-          icon: '04n',
-          description: 'overcast clouds',
-        },
-        {
-          temp: 87,
-          icon: '04n',
-          description: 'overcast clouds',
-        },
-      ],
+      fiveDayWeather: [],
+      //   {
+      //     temp: 83,
+      //     icon: '04n',
+      //     description: 'overcast clouds',
+      //   },
+      //   {
+      //     temp: 84,
+      //     icon: '04n',
+      //     description: 'overcast clouds',
+      //   },
+      //   {
+      //     temp: 85,
+      //     icon: '04n',
+      //     description: 'overcast clouds',
+      //   },
+      //   {
+      //     temp: 86,
+      //     icon: '04n',
+      //     description: 'overcast clouds',
+      //   },
+      //   {
+      //     temp: 87,
+      //     icon: '04n',
+      //     description: 'overcast clouds',
+      //   },
+      // ],
     }
   }
-
   // getFiveDayForecast() {
   //   axios.get('http://ipinfo.io').then(response => {
   //     const lat = Math.ceil(response.data.loc.slice(0, 6))
@@ -48,18 +47,18 @@ class App extends Component {
   //     axios.get(url).then(response => {
   //       const dailyWeatherData = response.data
   //       this.setState({
-  //         fiveDayWeatherList: dailyWeatherData.list,
+  //         fiveDayWeather: dailyWeatherData.list,
   //       })
   //     })
   //   })
   // }
-  componentDidMount() {
-    // setTimeout(() => {
-    //   this.getFiveDayForecast()
-    // }, 3500)
-  }
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.getFiveDayForecast()
+  //   }, 3500)
+
   render() {
-    // if (this.state.fiveDayWeatherList.length === 0) {
+    // if (this.state.fiveDayWeather.length === 0) {
     //   return (
     //     <div className="container justify-content-center centered">
     //       <Spinner className="center-block" name="pacman" color="steelblue" />
@@ -69,7 +68,7 @@ class App extends Component {
     return (
       <div className="container">
         <PrimaryWeather />
-        <FiveDayForecast fiveDayWeather={this.state.fiveDayWeather} />
+        {/* <FiveDayForecast fiveDayWeather={this.state.fiveDayWeather} /> */}
       </div>
     )
   }

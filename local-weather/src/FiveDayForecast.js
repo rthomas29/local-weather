@@ -26,12 +26,12 @@ class FiveDayForecast extends Component {
         <ForecastHeader className="text-center">Five Day Forecast</ForecastHeader>
         <div className="row align-items-center justify-content-center">
           {this.props.fiveDayWeather.map((day, index) => {
-            let url = `http://openweathermap.org/img/w/${day.icon}.png`
+            let url = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`
             return (
-              <DailyWeatherDiv key={index} className="col-sm-12 col-md text-center">
-                <DateHeader>Date Goes Here</DateHeader>
+              <DailyWeatherDiv key={day.dt} className="col-sm-12 col-md text-center">
+                <DateHeader>{formatDate(day.dt)}</DateHeader>
                 <Image src={url} alt="weather description icon" />
-                <TempParagraph>{Math.round(day.temp)} &deg;F</TempParagraph>
+                <TempParagraph>{Math.round(day.temp.day)} &deg;F</TempParagraph>
               </DailyWeatherDiv>
             )
           })}

@@ -19,13 +19,10 @@ class SearchBar extends Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.onSubmit()
-    console.log(this.props.inputValue)
   }
   render() {
-    const value = this.props.value
     return (
       <div className="container">
-        {this.props.inputValue}
         <Form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}

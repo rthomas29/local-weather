@@ -10,45 +10,66 @@ class PrimaryWeather extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
       inputValue: '',
-      cityName: 'Miami',
-      region: 'FL',
-      icon: '04n',
-      fahrenheit: '84',
-      description: 'overcast clouds',
+      cityName: '',
+      region: '',
+      icon: '',
+      fahrenheit: 0,
+      description: '',
     }
   }
   handleChange(value) {
     this.setState({ inputValue: value })
   }
-  saySubmitted() {
-    alert('submitted')
-  }
   handleSubmit() {
     this.setState({ cityName: this.state.inputValue })
   }
-  // getWeatherData() {
-  //   axios
-  //     .get('http://ipinfo.io')
-  //     .then(response => {
-  //       this.lat = Math.ceil(response.data.loc.slice(0, 6))
-  //       this.lon = Math.ceil(response.data.loc.slice(8, 15))
-  //       this.cityName = response.data.city
-  //       this.region = response.data.region
-  //     })
-  //     .then(response => {
-  //       const baseUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this
-  //         .lon}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
-  //       axios.get(baseUrl).then(response => {
-  //         this.setState({
-  //           tempFahrenheit: response.data.main.temp,
-  //           icon: response.data.weather[0].icon,
-  //           description: response.data.weather[0].description,
-  //         })
-  //       })
-  //     })
-  // }
+  getWeatherData() {
+    axios
+      .get('http://ipinfo.io')
+      .then(response => {
+        this.lat = Math.ceil(response.data.loc.slice(0, 6))
+        this.lon = Math.ceil(response.data.loc.slice(8, 15))
+        this.cityName = response.data.city
+        this.region = response.data.region
+      })
+      .then(response => {
+        const baseUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this
+          .lon}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`
+        axios.get(baseUrl).then(response => {
+          this.setState({
+            cityName: this.cityName,
+            region: this.region,
+            fahrenheit: response.data.main.temp,
+            icon: response.data.weather[0].icon,
+            description: response.data.weather[0].description,
+          })
+        })
+      })
+  }
+
+  getWeatherByCityName(city) {
+    axios
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`,
+      )
+      .then(response => {
+        this.setState({
+          cityName: this.state.inputValue,
+          region: response.data.sys.country,
+          fahrenheit: response.data.main.temp,
+          icon: response.data.weather[0].icon,
+          description: response.data.weather[0].description,
+        })
+      })
+  }
   componentDidMount() {
-    // this.getWeatherData()
+    this.getWeatherData()
+  }
+  shouldComponentUpdate(nextState) {
+    return this.state.inputValue !== nextState.inputValue || this.state.cityName !== nextState.cityName
+  }
+  componentDidUpdate() {
+    this.getWeatherByCityName(this.state.inputValue)
   }
   render() {
     return (
