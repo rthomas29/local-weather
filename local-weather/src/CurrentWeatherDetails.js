@@ -1,40 +1,36 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 const CurrentTempDiv = styled.div`
   max-width: 550px;
   margin: 50px auto 80px auto;
-`
+`;
 const TempParagraph = styled.div`
   font-size: 3em;
   text-align: center;
-`
+`;
 const Image = styled.img`
   height: 150px;
   width: 150px;
-`
+`;
 class CurrentWeatherDetails extends Component {
-  constructor(props) {
-    super(props)
-  }
   capitalizeFirstLetter(str) {
-    const output = str.split('')
+    const output = str.split('');
     for (let i = 0; i < output.length; i++) {
       if (i === 0) {
-        output[i] = output[i].toUpperCase()
+        output[i] = output[i].toUpperCase();
       } else if (output[i] === ' ') {
-        output[i + 1] = output[i + 1].toUpperCase()
+        output[i + 1] = output[i + 1].toUpperCase();
       }
     }
-    return output.join('')
+    return output.join('');
   }
   render() {
-    // const url = `http://openweathermap.org/img/w/${this.props.icon}.png`
+    const url = `http://openweathermap.org/img/w/${this.props.icon}.png`;
     return (
       <div className="container">
         <div className="row">
-          mmmhmm
-          {/* <div className="col">
+          <div className="col">
             <CurrentTempDiv className="text-center">
               <h1 className="page-header text-center">
                 {this.props.name}, {this.props.region}
@@ -45,11 +41,11 @@ class CurrentWeatherDetails extends Component {
                 <p id="city-weather">{Math.round(this.props.fahrenheit)} &deg;F</p>
               </TempParagraph>
             </CurrentTempDiv>
-          </div> */}
+          </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default CurrentWeatherDetails
+export default CurrentWeatherDetails;
