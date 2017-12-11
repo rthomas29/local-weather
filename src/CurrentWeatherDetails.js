@@ -26,7 +26,7 @@ class CurrentWeatherDetails extends Component {
     return output.join('');
   }
   render() {
-    const url = `http://openweathermap.org/img/w/${this.props.icon}.png`;
+    const url = `https://openweathermap.org/img/w/${this.props.icon}.png`;
     return (
       <div className="container">
         <div className="row">

@@ -13,7 +13,7 @@ class PrimaryWeather extends Component {
   };
   getWeatherData() {
     axios
-      .get('http://ipinfo.io')
+      .get('https://ipinfo.io')
       .then(response => {
         this.lat = Math.ceil(response.data.loc.slice(0, 6));
         this.lon = Math.ceil(response.data.loc.slice(8, 15));
