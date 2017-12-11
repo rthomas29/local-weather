@@ -1,4 +1,4 @@
-# [local-weather](https://local-weather-rakeem.herokuapp.com/)
+# [local-weather (heroku)](https://local-weather-rakeem.herokuapp.com/)
 
 Weather App (In progress)
 
