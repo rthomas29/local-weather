@@ -17,9 +17,7 @@ class App extends Component {
     axios.get('http://ipinfo.io').then(response => {
       const lat = Math.ceil(response.data.loc.slice(0, 6));
       const lon = Math.ceil(response.data.loc.slice(8, 15));
-      const url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${
-        lon
-      }&cnt=5&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`;
+      const url = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=5&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`;
       axios.get(url).then(response => {
         const dailyWeatherData = response.data;
         this.setState({

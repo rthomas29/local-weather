@@ -21,7 +21,7 @@ class PrimaryWeather extends Component {
         this.region = response.data.region;
       })
       .then(response => {
-        const baseUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${
+        const baseUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${
           this.lon
         }&APPID=b8d68c8a65b14ad16c7c153dca2c7882&units=imperial`;
         axios.get(baseUrl).then(response => {
