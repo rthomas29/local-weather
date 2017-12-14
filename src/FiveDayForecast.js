@@ -37,7 +37,9 @@ class FiveDayForecast extends Component {
               <DailyWeatherDiv key={day.dt} className="col-sm-12 col-md text-center">
                 <DateHeader>{formatDate(day.dt)}</DateHeader>
                 <Image src={url} alt="weather description icon" />
-                <TempParagraph>{Math.round(day.temp.day)} &deg;F</TempParagraph>
+                <TempParagraph>
+                  {Math.round(day.temp.min)} &deg;F {Math.round(day.temp.max)} &deg;F
+                </TempParagraph>
               </DailyWeatherDiv>
             );
           })}

@@ -8,6 +8,8 @@ class PrimaryWeather extends Component {
     cityName: '',
     region: '',
     icon: '',
+    min: 0,
+    max: 0,
     fahrenheit: 0,
     description: '',
   };
@@ -28,7 +30,8 @@ class PrimaryWeather extends Component {
           this.setState({
             cityName: this.city,
             region: this.region,
-            fahrenheit: response.data.main.temp,
+            min: response.data.main.temp_min,
+            max: response.data.main.temp_max,
             icon: response.data.weather[0].icon,
             description: response.data.weather[0].description,
           });
@@ -46,7 +49,8 @@ class PrimaryWeather extends Component {
           name={this.state.cityName}
           region={this.state.region}
           icon={this.state.icon}
-          fahrenheit={this.state.fahrenheit}
+          min={this.state.min}
+          max={this.state.max}
           description={this.state.description}
         />
       </div>
