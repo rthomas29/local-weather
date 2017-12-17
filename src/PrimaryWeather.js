@@ -32,6 +32,7 @@ class PrimaryWeather extends Component {
             region: this.region,
             min: response.data.main.temp_min,
             max: response.data.main.temp_max,
+            fahrenheit: response.data.main.temp,
             icon: response.data.weather[0].icon,
             description: response.data.weather[0].description,
           });
@@ -51,6 +52,7 @@ class PrimaryWeather extends Component {
           icon={this.state.icon}
           min={this.state.min}
           max={this.state.max}
+          fahrenheit={this.state.fahrenheit}
           description={this.state.description}
         />
       </div>
